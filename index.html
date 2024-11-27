@@ -6,27 +6,28 @@
     <title>bawi ako sunod sir!!!</title>
     <style>
         body {
-            background-color: #2f2f2f;
-            color: black;
-            font-family: Arial, sans-serif;
-            height: 100vh;
-            margin: 100px;
-            padding: 20px;
             display: flex;
             justify-content: center;
             align-items: flex-start;
+            height: 100vh;
+            margin: 100px;
+            padding: 20px;
             flex-direction: column;
             text-align: center;
+            background-color: #2f2f2f;
+            color: black;
+            font-family: Arial, sans-serif;
         }
 
-        .marquee-wrapper {
+        .marquee-container {
             width: 80%;
+            text-align: center;
             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
             margin-top: 20px;
             padding-bottom: 40px;
         }
 
-        .marquee-element {
+        marquee {
             margin: 15px 0;
             padding: 10px;
             background-color: wheat;
@@ -34,33 +35,46 @@
             border-radius: 5px;
         }
 
-        .animated-text {
+        .marquee-animated {
             position: relative;
-            animation: changeColor 5s infinite alternate;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
         }
 
-        @keyframes changeColor {
-            0% { color: red; }
-            25% { color: orange; }
-            50% { color: yellow; }
-            75% { color: green; }
-            100% { color: blue; }
+        .marquee-animated-2 {
+            background-color: red;
+            animation-name: marquee-animation-2;
+            animation-duration: 10s;
+            animation-delay: 2s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+
+        @keyframes marquee-animation-2 {
+            12% {background-color: red; left: 0px;}
+            25% {background-color: black; left: -50px;}
+            37% {background-color: red; left: 0px;}
+            50% {background-color: black; left: 50px;}
+            62% {background-color: red; left: 0px;}
+            75% {background-color: black; left: -50px;}
+            82% {background-color: red; left: 0px;}
+            100% {background-color: black; left: 50px;}
+        }
+
+        /* Add left and right movement to the last marquee */
+        @keyframes moveLeftRight {
+            0% { left: 0px; }
+            50% { left: 20px; }
+            100% { left: 0px; }
+        }
+
+        .marquee-element {
+            position: relative;
         }
 
         .background-animation {
-            background-color: red;
-            animation: moveBackground 10s 2s infinite alternate;
-        }
-
-        @keyframes moveBackground {
-            12% { background-color: red; left: 0px; }
-            25% { background-color: black; left: -50px; }
-            37% { background-color: red; left: 0px; }
-            50% { background-color: black; left: 50px; }
-            62% { background-color: red; left: 0px; }
-            75% { background-color: black; left: -50px; }
-            82% { background-color: red; left: 0px; }
-            100% { background-color: black; left: 50px; }
+            animation: moveLeftRight 3s ease-in-out infinite;
         }
 
         button {
@@ -81,50 +95,37 @@
 </head>
 <body>
 
-    <div class="marquee-wrapper">
-        <div class="marquee-element">
-            <marquee id="marquee-1" width="100%" direction="right" height="30px" behavior="scroll" scrollamount="5">PAGOD NA AQ SIR</marquee>
-        </div>
-        <div class="marquee-element">
-            <marquee id="marquee-2" width="100%" direction="left" height="30px" behavior="scroll" scrollamount="5">HINDI DAPAT GAN'TO GAWA KO</marquee>
-        </div>
-        <div class="marquee-element">
-            <marquee id="marquee-3" width="100%" direction="right" height="30px" behavior="alternate" scrollamount="5">DAPAT MAY BUS 'TO E</marquee>
-        </div>
-        <div class="marquee-element animated-text">
-            <marquee id="marquee-4" width="100%" direction="left" height="30px" behavior="alternate" scrollamount="5">PAGTYAGAAN NALANG MUNA</marquee>
-        </div>
-        <div class="marquee-element">
-            <marquee id="marquee-5" width="100%" direction="up" height="60px" behavior="scroll" scrollamount="5">BAWI AKO SUNOD SIR</marquee>
-        </div>
-        <div class="marquee-element">
-            <marquee id="marquee-6" width="100%" direction="down" height="60px" behavior="scroll" scrollamount="5">PROMISE</marquee>
-        </div>
-        <div class="marquee-element">
-            <marquee id="marquee-7" width="100%" direction="up" height="60px" behavior="alternate" scrollamount="5">ANTOK NA'KO</marquee>
-        </div>
+    <div class="marquee-container">
+        <marquee id="A" width="100%" direction="right" height="30px" behavior="scroll" scrollamount="5">PAGOD NA AQ SIR</marquee>
+        <marquee id="B" width="100%" direction="left" height="30px" behavior="scroll" scrollamount="5">HINDI DAPAT GAN'TO GAWA KO</marquee>
+        <marquee id="C" width="100%" direction="right" height="30px" behavior="alternate" scrollamount="5">DAPAT MAY BUS 'TO E</marquee>
+        <marquee class="marquee-animated" id="D" width="100%" direction="left" height="30px" behavior="alternate" scrollamount="5">PAGTYAGAAN NALANG MUNA</marquee>
+        <marquee id="E" width="100%" direction="up" height="60px" behavior="scroll" scrollamount="5">BAWI AKO SUNOD SIR</marquee>
+        <marquee id="F" width="100%" direction="down" height="60px" behavior="scroll" scrollamount="5">PROMISE</marquee>
+        <marquee id="G" class="marquee-animated" width="100%" direction="up" height="60px" behavior="alternate" scrollamount="5">ANTOK NA'KO</marquee>
         <div class="marquee-element background-animation">
-            <marquee id="marquee-8" width="100%" direction="up" height="60px" behavior="alternate" scrollamount="5"></marquee>
+            <marquee class="marquee-animated-2" id="H" width="100%" direction="up" height="60px" behavior="alternate" scrollamount="5"> </marquee>
         </div>
     </div>
 
     <div>
-        <button onclick="toggleMarquee(false)">TIGIL NA NATIN 'TO</button>
-        <button onclick="toggleMarquee(true)">JOK PARA SA GRADES</button>
+        <button onclick="stopMarquee()">TIGIL NA NATIN 'TO</button>
+        <button onclick="resumeMarquee()">JOK PARA SA GRADES</button>
     </div>
 
     <script>
-        function toggleMarquee(resume) {
-            const marquees = document.querySelectorAll('marquee');
-            marquees.forEach(marquee => {
-                if (resume) {
-                    marquee.start();
-                } else {
-                    marquee.stop();
-                }
+        function stopMarquee() {
+            document.querySelectorAll('marquee').forEach(marquee => {
+                marquee.stop();
             });
+            document.getElementById('H').style.animationPlayState = 'paused';
+        }
 
-            document.getElementById('marquee-8').style.animationPlayState = resume ? 'running' : 'paused';
+        function resumeMarquee() {
+            document.querySelectorAll('marquee').forEach(marquee => {
+                marquee.start();
+            });
+            document.getElementById('H').style.animationPlayState = 'running';
         }
     </script>
 
